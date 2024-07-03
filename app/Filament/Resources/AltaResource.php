@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\DatePicker;
 
 class AltaResource extends Resource
 {
@@ -31,6 +32,9 @@ class AltaResource extends Resource
                     ->numeric(),
                 Forms\Components\Toggle::make('pago_al_dia')
                     ->required(),
+
+                DatePicker::make('fecha_alta')
+                ->format('Y/m/d')        
             ]);
     }
 
