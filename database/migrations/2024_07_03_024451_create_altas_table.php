@@ -13,6 +13,7 @@ class CreateAltasTable extends Migration
             $table->foreignId('alumno_id')->constrained('alumnos')->onDelete('cascade');
             $table->foreignId('curso_id')->constrained('cursos')->onDelete('cascade');
             $table->boolean('pago_al_dia')->default(false);
+            $table->timestamp('fecha_alta')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }

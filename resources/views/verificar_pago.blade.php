@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,10 @@
             <button type="submit" class="btn btn-primary mb-2">Verificar</button>
         </form>
 
+        @if (isset($error))
+            <div class="alert alert-danger mt-3">{{ $error }}</div>
+        @endif
+
         @if (isset($result))
             <div class="result-container">
                 <h2 class="text-center">Resultado:</h2>
@@ -35,6 +40,10 @@
                                     Curso: {{ $alta['curso'] }} - Pago al día: 
                                     <span class="badge badge-{{ $alta['pago_al_dia'] == 'Sí' ? 'success' : 'danger' }}">
                                         {{ $alta['pago_al_dia'] }}
+                                    </span>
+                                    - Caducada: 
+                                    <span class="badge badge-{{ $alta['caducada'] == 'Sí' ? 'danger' : 'success' }}">
+                                        {{ $alta['caducada'] }}
                                     </span>
                                 </li>
                             @endforeach

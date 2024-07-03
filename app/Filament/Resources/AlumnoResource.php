@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class AlumnoResource extends Resource
 {
     protected static ?string $model = Alumno::class;
-
+   # protected static ?string $navigationLabel = 'NuevoNombre'; forma de cambiar nombre a la solapa del panel
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
