@@ -6,10 +6,12 @@ use App\Filament\Resources\AltaResource\Pages;
 use App\Filament\Resources\AltaResource\RelationManagers;
 use App\Models\Alta;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\DatePicker;
@@ -21,31 +23,33 @@ class AltaResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('alumno_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('curso_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\Toggle::make('pago_al_dia')
-                    ->required(),
+        {
+            return $form
+                ->schema([
+                    Forms\Components\Select::make('alumno_id')->label('Alumno')
+                        ->relationship('alumno', 'nombre')
+                        ->required(),  
+                    Forms\Components\Select::make('curso_id')->label('Curso')
+                        ->relationship('curso', 'nombre')
+                        ->required(),
+                        
+                    Forms\Components\Toggle::make('pago_al_dia')
+                        ->required(),
 
-                DatePicker::make('fecha_alta')
-                ->format('Y/m/d')        
-            ]);
-    }
+                    DatePicker::make('fecha_alta')
+                    ->format('Y/m/d')
+                    ->required(),     
+                ]);
+        }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('alumno_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('alumno_id')->label('Alumno')
+                    ->numeric() 
                     ->sortable(),
-                Tables\Columns\TextColumn::make('curso_id')
+                Tables\Columns\TextColumn::make('curso_id')->label('Curso')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\IconColumn::make('pago_al_dia')
