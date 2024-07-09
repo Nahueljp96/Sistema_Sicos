@@ -49,6 +49,8 @@ class AltaResource extends Resource
                     ->label('Alumno'),
                 Tables\Columns\TextColumn::make('curso.nombre')
                      ->label('Curso'),
+                Tables\Columns\TextColumn::make('alumno.email')
+                     ->label('Email'),
                 Tables\Columns\IconColumn::make('pago_al_dia')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('fecha_alta')

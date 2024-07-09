@@ -32,6 +32,9 @@ class AlumnoResource extends Resource
                 Forms\Components\TextInput::make('apellido')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('email')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -44,6 +47,8 @@ class AlumnoResource extends Resource
                 Tables\Columns\TextColumn::make('nombre')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('apellido')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
