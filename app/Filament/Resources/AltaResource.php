@@ -32,7 +32,6 @@ class AltaResource extends Resource
                     Forms\Components\Select::make('curso_id')->label('Curso')
                         ->relationship('curso', 'nombre')
                         ->required(),
-                        
                     Forms\Components\Toggle::make('pago_al_dia')
                         ->required(),
 
