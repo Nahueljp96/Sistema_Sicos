@@ -45,14 +45,15 @@ class AltaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('alumno_id')->label('Alumno')
-                    ->numeric() 
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('curso_id')->label('Curso')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('alumno.nombre')
+                    ->label('Alumno'),
+                Tables\Columns\TextColumn::make('curso.nombre')
+                     ->label('Curso'),
                 Tables\Columns\IconColumn::make('pago_al_dia')
                     ->boolean(),
+                Tables\Columns\TextColumn::make('fecha_alta')
+                    ->label('Fecha de Alta')
+                    ->date(),    
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

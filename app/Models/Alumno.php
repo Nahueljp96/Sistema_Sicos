@@ -9,7 +9,7 @@ class Alumno extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['dni', 'nombre', 'apellido'];
+    protected $fillable = ['dni', 'nombre', 'apellido', 'email'];
 
     public function altas()
     {
