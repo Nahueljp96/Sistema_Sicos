@@ -15,4 +15,14 @@ class Alumno extends Model
     {
         return $this->hasMany(Alta::class);
     }
+
+    public function pagos()
+    {
+        return $this->hasMany(Pago::class);
+    }
+
+    public function cursos()
+    {   
+        return $this->belongsToMany(Curso::class, 'altas')->withTimestamps();
+    }
 }

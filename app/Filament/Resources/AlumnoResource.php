@@ -9,10 +9,12 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+use Filament\Forms\Components\{TextInput, DatePicker, Select};
 class AlumnoResource extends Resource
 {
     protected static ?string $model = Alumno::class;
@@ -35,6 +37,8 @@ class AlumnoResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->required()
                     ->maxLength(255),
+                    TextInput::make('celular')->label('Celular')->required(),
+                    TextInput::make('celular_contacto')->label('Celular de contacto')->nullable(),
             ]);
     }
 
@@ -58,6 +62,13 @@ class AlumnoResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
+                    TextColumn::make('cursos.nombre')
+                    ->label('Cursos')
+                    ->color('primary') // Estiliza el texto con un color
+                    ->wrap()           // Asegura que el texto se envuelva si es muy largo
+                    ->badge(),         // Aplica estilo tipo "badge"  
+                    
             ])
             ->filters([
                 //
