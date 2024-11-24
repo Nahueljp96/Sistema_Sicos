@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 
 
-use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\PagoController;
+
 #web:
-Route::get('/verificar-pago', [AlumnoController::class, 'verificarPago']);
+Route::get('/verificar-pago', [PagoController::class, 'showVerificarPago'])->name('verificar-pago');
+Route::post('/verificar-pago', [PagoController::class, 'verificarPago'])->name('verificar-pago.submit');

@@ -62,4 +62,7 @@ class PagoResource extends Resource
             'edit' => Pages\EditPago::route('/{record}/edit'),
         ];
     }
+
+   
+   
 }

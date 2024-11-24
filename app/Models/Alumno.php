@@ -25,4 +25,14 @@ class Alumno extends Model
     {   
         return $this->belongsToMany(Curso::class, 'altas')->withTimestamps();
     }
+
+    public function asistencias()
+    {
+        return $this->hasMany(Asistencia::class);
+    }
+
+
+
+
+
 }
